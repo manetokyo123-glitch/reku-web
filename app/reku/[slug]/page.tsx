@@ -59,12 +59,12 @@ export default async function RekuPage({ params }: { params: Promise<{ slug: str
 
       {/* イラスト */}
       {reku.thumbnail && (
-        <div className="relative w-full max-w-md mx-auto aspect-square rounded-2xl overflow-hidden shadow-md mb-8">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-md mb-8">
           <Image
             src={reku.thumbnail}
             alt={`${reku.title} のイラスト`}
             fill
-            sizes="(max-width: 768px) 100vw, 448px"
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -76,22 +76,6 @@ export default async function RekuPage({ params }: { params: Promise<{ slug: str
         className="prose prose-green max-w-none"
         dangerouslySetInnerHTML={{ __html: reku.contentHtml }}
       />
-
-      {/* 実写真 */}
-      {reku.photo && (
-        <div className="mt-10">
-          <h2 className="text-lg font-bold text-gray-700 mb-3">実施の様子</h2>
-          <div className="relative w-full max-w-md mx-auto aspect-video rounded-2xl overflow-hidden shadow-md">
-            <Image
-              src={reku.photo}
-              alt={`${reku.title} の実施写真`}
-              fill
-              sizes="(max-width: 768px) 100vw, 448px"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      )}
 
       {/* 戻るリンク（下） */}
       <div className="mt-10">
