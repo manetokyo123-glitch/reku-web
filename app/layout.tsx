@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Leaf } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-amber-50">
         <header className="bg-green-700 text-white shadow-md">
           <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
-            <span className="text-2xl">🌿</span>
+            <Leaf size={24} />
             <a href="/" className="text-xl font-bold tracking-wide hover:opacity-80">
               レク解説サイト
             </a>

@@ -2,6 +2,7 @@ import { getAllSlugs, getRekuBySlug } from '@/lib/reku';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Clock, Users, FolderOpen } from 'lucide-react';
 
 function toNotFoundIfMissing(err: unknown): null {
   if (err instanceof Error && (err as NodeJS.ErrnoException).code === 'ENOENT') return null;
@@ -18,12 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!reku) return {};
   return { title: `${reku.title} | レク解説サイト` };
 }
-
-const DIFFICULTY_COLOR: Record<string, string> = {
-  やさしい: 'bg-green-100 text-green-800',
-  ふつう: 'bg-yellow-100 text-yellow-800',
-  むずかしい: 'bg-red-100 text-red-800',
-};
 
 export default async function RekuPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -44,15 +39,14 @@ export default async function RekuPage({ params }: { params: Promise<{ slug: str
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-800 mb-3">{reku.title}</h1>
         <div className="flex flex-wrap gap-2 text-sm">
-          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">⏱ {reku.time}</span>
-          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">👥 {reku.target}</span>
-          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">📂 {reku.category}</span>
-          <span
-            className={`px-3 py-1 rounded-full font-medium ${
-              DIFFICULTY_COLOR[reku.difficulty] ?? 'bg-gray-100 text-gray-600'
-            }`}
-          >
-            {reku.difficulty}
+          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full inline-flex items-center gap-1">
+            <Clock size={14} />{reku.time}
+          </span>
+          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full inline-flex items-center gap-1">
+            <Users size={14} />{reku.target}
+          </span>
+          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full inline-flex items-center gap-1">
+            <FolderOpen size={14} />{reku.category}
           </span>
         </div>
       </div>
