@@ -3,8 +3,8 @@ import { Leaf } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "レク解説サイト",
-  description: "古民家イベント向けレクリエーション企画の解説一覧",
+  title: "レク本",
+  description: "スタッフがレク中に手軽に確認できるレク本アプリ",
 };
 
 export default function RootLayout({
@@ -19,13 +19,13 @@ export default function RootLayout({
           <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
             <Leaf size={24} />
             <a href="/" className="text-xl font-bold tracking-wide hover:opacity-80">
-              レク解説サイト
+              レク本
             </a>
           </div>
         </header>
         <main className="max-w-5xl mx-auto px-4 py-8">{children}</main>
         <footer className="text-center text-sm text-gray-400 py-6">
-          古民家イベント スタッフ向け資料
+          スタッフ向けレク本
         </footer>
       </body>
     </html>
